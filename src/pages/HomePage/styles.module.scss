@@ -1,0 +1,24 @@
+.container {
+    max-width: 75%;
+    margin: 50px auto;
+}
+
+.searchFormContainer {
+    margin-bottom: 50px;
+}
+
+.repositoryWrapper {
+    list-style: none;
+    padding-bottom: 24px;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid #1a202c;
+    }
+}
+
+
+
+
+.topicTag:not(:last-child) {
+    margin-right: 4px;
+}

@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "cra-github-repositories-search",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,5 +39,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "framer-motion": "^8.5.4",
+    "prettier": "^2.5.1",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.8.0",
+    "sass": "^1.52.1"
   }
 }

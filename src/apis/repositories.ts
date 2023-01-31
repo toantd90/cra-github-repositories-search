@@ -8,10 +8,10 @@ export async function fetchRepositories(
   page: number,
   perPage: number = NUMBER_OF_REPOSITORIES_PER_PAGE,
 ): Promise<Response> {
-  console.log(`fetchRepositories: query: ${query}, page: ${page}`);
   if (!query) return { items: [], total_count: 0 };
   const response = await fetch(
     `${GITHUB_API}?q=${query}&per_page=${perPage}&page=${page}`,
   );
+
   return response.json();
 }

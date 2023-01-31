@@ -17,7 +17,7 @@ export default function useReactQuery(searchQuery: string) {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     ['repositories', searchQuery, currentPage],
     () => fetchRepositories(searchQuery, currentPage),
     {
@@ -41,5 +41,13 @@ export default function useReactQuery(searchQuery: string) {
     }
   }, [currentPage, queryClient, searchQuery, totalCount]);
 
-  return { repositories, isLoading, totalCount, currentPage, setCurrentPage };
+
+  return {
+    repositories,
+    hasError: data !== undefined && data.hasOwnProperty('message'),
+    isLoading,
+    totalCount,
+    currentPage,
+    setCurrentPage,
+  };
 }

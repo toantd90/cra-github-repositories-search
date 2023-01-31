@@ -29,16 +29,20 @@ const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const throttleSearchQuery = useThrottle(searchQuery);
 
-  const { repositories, totalCount, isLoading, currentPage, setCurrentPage } =
-    useReactQuery(throttleSearchQuery);
+  const {
+    repositories,
+    totalCount,
+    isLoading,
+    hasError,
+    currentPage,
+    setCurrentPage,
+  } = useReactQuery(throttleSearchQuery);
 
   const onChangeHandle = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 
   const hasMore = totalCount > currentPage * NUMBER_OF_REPOSITORIES_PER_PAGE;
-
-  console.log({ totalCount, hasMore, currentPage });
 
   return (
     <div className={styles.container}>
@@ -54,62 +58,80 @@ const HomePage = () => {
           <CircularProgress isIndeterminate color='green.300' />
         </Center>
       )}
-      <UnorderedList className={styles.repositoriesContainer} spacing={6}>
-        {repositories.map((item: Repository) => (
-          <ListItem className={styles.repositoryWrapper} key={item.id}>
-            <Link color='teal.400' href='#' fontWeight='bold' fontSize={16}>
-              {item.full_name}
-            </Link>
-            <Text fontSize={14} mb={1} className={styles.description}>
-              {item.description}
-            </Text>
-            {item.topics.map((topic: string, index: number) => (
-              <Tag
-                className={styles.topicTag}
-                fontSize={12}
-                mb={1}
-                key={`${topic}-${index}`}
-              >
-                {topic}
-              </Tag>
-            ))}
-            <Stack direction='row' alignItems='center' fontSize={12}>
-              <StarIcon />
-              <Text>{item.stargazers_count}</Text>
-              {item.language && (
-                <>
-                  <CircleIcon /> <Text>{item.language}</Text>
-                </>
-              )}
-            </Stack>
-          </ListItem>
-        ))}
-      </UnorderedList>
-      {repositories.length > 0 && (
-        <Stack
-          spacing={4}
-          direction='row'
-          align='center'
-          justify='flex-end'
-          className={styles.pages}
-        >
-          <Button
-            isDisabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
-            leftIcon={<ArrowBackIcon />}
-          >
-            Previous
-          </Button>
 
-          <span>{currentPage}</span>
-          <Button
-            isDisabled={!hasMore}
-            onClick={() => setCurrentPage(currentPage + 1)}
-            rightIcon={<ArrowForwardIcon />}
+      {!hasError && !isLoading && totalCount === 0 && searchQuery && (
+        <Center>
+          <Text fontSize={20}>
+            We couldn’t find any repositories matching '{searchQuery}'
+          </Text>
+        </Center>
+      )}
+      {hasError && (
+        <Center>
+          <Text color='red.500' fontSize={20}>There is an error when searching repositories. Please try to search again</Text>
+        </Center>
+      )}
+      {totalCount > 0 && (
+        <>
+          <UnorderedList className={styles.repositoriesContainer} spacing={6}>
+            <ListItem className={styles.repositoryWrapper}>
+              <Text fontSize={20}>Total: {totalCount} repositories</Text>
+            </ListItem>
+            {repositories.map((item: Repository) => (
+              <ListItem className={styles.repositoryWrapper} key={item.id}>
+                <Link color='teal.400' href='#' fontWeight='bold' fontSize={16}>
+                  {item.full_name}
+                </Link>
+                <Text fontSize={14} mb={1} className={styles.description}>
+                  {item.description}
+                </Text>
+                {item.topics.map((topic: string, index: number) => (
+                  <Tag
+                    className={styles.topicTag}
+                    fontSize={12}
+                    mb={1}
+                    key={`${topic}-${index}`}
+                  >
+                    {topic}
+                  </Tag>
+                ))}
+                <Stack direction='row' alignItems='center' fontSize={12}>
+                  <StarIcon />
+                  <Text>{item.stargazers_count}</Text>
+                  {item.language && (
+                    <>
+                      <CircleIcon /> <Text>{item.language}</Text>
+                    </>
+                  )}
+                </Stack>
+              </ListItem>
+            ))}
+          </UnorderedList>
+          <Stack
+            spacing={4}
+            direction='row'
+            align='center'
+            justify='flex-end'
+            className={styles.pages}
           >
-            Next
-          </Button>
-        </Stack>
+            <Button
+              isDisabled={currentPage === 1}
+              onClick={() => setCurrentPage(currentPage - 1)}
+              leftIcon={<ArrowBackIcon />}
+            >
+              Previous
+            </Button>
+
+            <span>{currentPage}</span>
+            <Button
+              isDisabled={!hasMore}
+              onClick={() => setCurrentPage(currentPage + 1)}
+              rightIcon={<ArrowForwardIcon />}
+            >
+              Next
+            </Button>
+          </Stack>
+        </>
       )}
     </div>
   );

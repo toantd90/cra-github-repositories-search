@@ -12,13 +12,16 @@
     padding-bottom: 24px;
 
     &:not(:last-child) {
-        border-bottom: 1px solid #1a202c;
+        border-bottom: 1px solid #E2E8F0;
     }
 }
 
-
-
-
 .topicTag:not(:last-child) {
     margin-right: 4px;
+}
+
+.description {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

@@ -38,8 +38,13 @@ const HomePage = () => {
     setCurrentPage,
   } = useReactQuery(throttleSearchQuery);
 
-  const onChangeHandle = (event: ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
+  };
+
+  const onPageChange = (nextPage: number) => {
+    setCurrentPage(nextPage);
+    window.scroll({ top: 0, behavior: 'smooth' });
   };
 
   const hasMore = totalCount > currentPage * NUMBER_OF_REPOSITORIES_PER_PAGE;
@@ -50,7 +55,7 @@ const HomePage = () => {
         <FormLabel>Github repository name</FormLabel>
         <Input
           placeholder='Input Github repository name'
-          onChange={onChangeHandle}
+          onChange={onInputChange}
         />
       </FormControl>
       {isLoading && (
@@ -68,7 +73,10 @@ const HomePage = () => {
       )}
       {hasError && (
         <Center>
-          <Text color='red.500' fontSize={20}>There is an error when searching repositories. Please try to search again</Text>
+          <Text color='red.500' fontSize={20}>
+            API rate limit exceeded. Please wait for some time to be continue to
+            search
+          </Text>
         </Center>
       )}
       {totalCount > 0 && (
@@ -116,7 +124,7 @@ const HomePage = () => {
           >
             <Button
               isDisabled={currentPage === 1}
-              onClick={() => setCurrentPage(currentPage - 1)}
+              onClick={() => onPageChange(currentPage - 1)}
               leftIcon={<ArrowBackIcon />}
             >
               Previous
@@ -125,7 +133,7 @@ const HomePage = () => {
             <span>{currentPage}</span>
             <Button
               isDisabled={!hasMore}
-              onClick={() => setCurrentPage(currentPage + 1)}
+              onClick={() => onPageChange(currentPage + 1)}
               rightIcon={<ArrowForwardIcon />}
             >
               Next

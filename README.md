@@ -8,7 +8,13 @@
 
 ## 📷 Screenshots
 
+
+### Desktop
 https://user-images.githubusercontent.com/4978810/215914637-5650a3ed-4010-4c03-89e0-d47f9e4d674f.mov
+
+### Mobile
+https://user-images.githubusercontent.com/4978810/215918566-17876e2b-a0a4-49c6-82b1-212cc1ad37cd.mov
+
 
 ## 📖 Prerequisites
 
@@ -76,11 +82,11 @@ You should be able to run the following command after the installation procedure
 
 ## 🚶 Approach
 
-- `useThrottle` help to not stress the API with calls once typing every characters. Delay time is configurable. (500ms is default)
+- `useThrottle` help to not stress the API with calls once typing every character. Delay time is configurable. (500ms is the default setting)
 
-- [Chakra UI](https://chakra-ui.com/) used to build quick UI. You don't need to write CSS for elements. Elements are also Accessibility supported already.
+- [Chakra UI](https://chakra-ui.com/) used to build quick responsive UI. You don't need to write CSS for elements. Elements are also Accessibility supported already.
 
-- In order to provide a smooth pagination I use [React Query](https://react-query-v3.tanstack.com/). It help to prefetch the next page so users don't need to wait for the data to be fetched. React Query comes with data caching and also keep the previous data so users can have a nice exeriences using the sample app.
+- In order to provide a smooth pagination I use [React Query](https://react-query-v3.tanstack.com/). It helps to prefetch the next page so users don't need to wait for the data to be fetched. React Query comes with data caching and also keeps the previous data so users can have a nice experience using the app.
 
 ## 📔 Notes
 

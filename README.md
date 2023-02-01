@@ -6,6 +6,10 @@
 </div>
 <br>
 
+## 📷 Screenshots
+
+https://user-images.githubusercontent.com/4978810/215914637-5650a3ed-4010-4c03-89e0-d47f9e4d674f.mov
+
 ## 📖 Prerequisites
 
 For development, you will only need Node.js installed on your environment.
@@ -71,3 +75,19 @@ You should be able to run the following command after the installation procedure
 - [React Router](https://reactrouter.com/en/main) enables "client side routing".
 
 ## 🚶 Approach
+
+- `useThrottle` help to not stress the API with calls once typing every characters. Delay time is configurable. (500ms is default)
+
+- [Chakra UI](https://chakra-ui.com/) used to build quick UI. You don't need to write CSS for elements. Elements are also Accessibility supported already.
+
+- In order to provide a smooth pagination I use [React Query](https://react-query-v3.tanstack.com/). It help to prefetch the next page so users don't need to wait for the data to be fetched. React Query comes with data caching and also keep the previous data so users can have a nice exeriences using the sample app.
+
+## 📔 Notes
+
+- Tools are provided by [Create React App](https://create-react-app.dev/)
+- Folder structure is based on my repository at [react-typescript-starter-kit](https://github.com/toantd90/react-typescript-starter-kit)
+- React-Query code from my repository at [react-query-examples
+](https://github.com/toantd90/react-query-examples)
+
+## ©️ License
+MIT

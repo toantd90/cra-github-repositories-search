@@ -22,18 +22,22 @@ For development, you will only need Node.js installed on your environment.
 
 ### pnPm
 
-I used [pnPm](https://pnpm.io/) to save disk space and boosting installation speed.
+I used [pnPm](https://pnpm.io/) to save disk space and boosting installation speed. ([benchmarks](https://pnpm.io/benchmarks))
 
 You should be able to run the following command after the installation procedure [How to install pnPm](https://pnpm.io/installation)
 
     $ pnpm --version
     7.26.2
 
-### Alternatives
+<details>
+  <summary>Alternatives</summary>
 
-#### Node
+<br>
+
+### Node
 
 [Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
+
 You should be able to run the following command after the installation procedure [How to install Node.js](https://nodejs.dev/en/learn/how-to-install-nodejs/) .
 
     $ node --version
@@ -42,13 +46,14 @@ You should be able to run the following command after the installation procedure
     $ npm --version
     8.19.3
 
-#### Yarn
+### Yarn
 
 [Yarn](https://yarnpkg.com/) is a package manager.
 You should be able to run the following command after the installation procedure [How to install Yarn](https://yarnpkg.com/getting-started/install) .
 
     $ yarn --version
     1.22.10
+</details>
 
 ---
 
@@ -56,11 +61,11 @@ You should be able to run the following command after the installation procedure
 
     $ git clone git@github.com:toantd90/cra-github-repositories-search.git
     $ cd cra-github-repositories-search
-    $ npm install
+    $ pnpm install
 
 ## 👷 How to run
 
-    $ npm start
+    $ pnpm start
 
 ---
 

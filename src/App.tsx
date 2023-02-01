@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+// import { ReactQueryDevtools } from 'react-query/devtools';
 
 import HomePage from 'pages/HomePage';
 
@@ -21,7 +21,7 @@ const AppWrapper = () => {
       <ChakraProvider>
         <QueryClientProvider client={queryClient}>
           <App />
-          <ReactQueryDevtools initialIsOpen={false} />
+          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         </QueryClientProvider>
       </ChakraProvider>
     </Router>

@@ -7,9 +7,11 @@ export default function useThrottleValue<T>(value: T, delay: number = 500) {
     if (throttling.current === false) {
       setThrottleValue(value);
       throttling.current = true;
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         if (throttling?.current) throttling.current = false;
       }, delay);
+
+      return clearTimeout(timeout);
     }
   }, [value, delay]);
   return throttleValue;
